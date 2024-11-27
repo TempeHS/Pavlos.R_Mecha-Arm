@@ -8,7 +8,7 @@ Servo 5 pin 5
 UltraSonic 1 pin 6
 */
 #include <Servo.h>
-#include <Ultrasonic.h>
+#include "Ultrasonic.h"
 
 #define ServoPin5 5
 #define ServoPin6 6
@@ -17,7 +17,7 @@ UltraSonic 1 pin 6
 #define ServoPin9 9
 
 
-#define UltraSonicPin D4
+#define UltraSonicPin 4
 
 Servo servo5;
 Servo servo6;
