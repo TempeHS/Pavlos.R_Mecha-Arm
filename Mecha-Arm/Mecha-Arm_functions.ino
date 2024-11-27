@@ -31,7 +31,7 @@ void servoTest() {
 
 void ultraSonicTest() {
 
-  int val = ultraSonic2.distanceRead();
+  val = ultraSonic2.distanceRead();
 
 
 
@@ -43,14 +43,37 @@ void ultraSonicTest() {
 
 void fullTest() {
 
-  int val = ultraSonic2.distanceRead();
+  int servoVal = val * 4;
 
-  val = val / 5;
+  servo5.write(servoVal);
+  servo6.write(servoVal);
+  servo7.write(servoVal);
+  servo8.write(servoVal);
+  servo9.write(servoVal);
 
-  servo5.write(val);
-  servo6.write(val);
-  servo7.write(val);
-  servo8.write(val);
-  servo9.write(val);
+}
+
+void fullTestIf() {
+
+
+  if (val >= 5) {
+
+    servo5.write(180);
+    servo6.write(180);
+    servo7.write(180);
+    servo8.write(180);
+    servo9.write(180);
+
+  } else {
+
+    servo5.write(0);
+    servo6.write(0);
+    servo7.write(0);
+    servo8.write(0);
+    servo9.write(0);
+
+  }
+
+
 
 }

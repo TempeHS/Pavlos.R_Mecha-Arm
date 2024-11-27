@@ -27,6 +27,7 @@ Servo servo7;
 Servo servo8;
 Servo servo9;
 
+int val;
 
 void setup() {
 
@@ -40,5 +41,7 @@ Serial.println("debugged");
 void loop() {
 
   fullTest();
-  
+
+  ultraSonicTest();
+
 }
