@@ -18,8 +18,12 @@ Ultrasonic ultraSonic2(2);
 #define ServoPin8 8
 #define ServoPin9 9
 
+#define button 3
 
-#define UltraSonicPin 4
+#define potPin A3
+
+bool buttonState = false;
+bool buttonCanPress;
 
 Servo servo5;
 Servo servo6;
@@ -28,20 +32,40 @@ Servo servo8;
 Servo servo9;
 
 int val;
+int potVal;
+int potValMapped;
 
 void setup() {
 
-servoSetup();
+  servoSetup();
+  buttonSetup();
 
-Serial.begin(9600);
-Serial.println("debugged");
+  Serial.begin(9600);
+  Serial.println("debugged");
 
 }
 
 void loop() {
 
-  fullTest();
 
   ultraSonicTest();
+
+  buttonRun();
+  potTest();
+
+  if(buttonState == true) {
+
+    fullTest();
+
+  } else if(buttonState == false) {
+
+    fullTestIf();
+
+  } else {
+
+    Serial.println("Error");
+
+  }
+  
 
 }

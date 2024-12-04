@@ -8,6 +8,34 @@ servo9.attach(ServoPin9);
 
 }
 
+void buttonSetup() {
+
+  pinMode(button, INPUT);
+
+}
+
+void buttonRun() {
+
+  if(digitalRead(button) == true && buttonCanPress == true) {
+
+    buttonState = !buttonState;
+
+  }
+
+  if(digitalRead(button) == true) {
+    
+    buttonCanPress = false;
+
+  } else if(digitalRead(button) == false) {
+
+    buttonCanPress = true;
+  
+  }
+
+  Serial.println(buttonState);
+  
+}
+
 void servoTest() {
 
 
@@ -43,7 +71,7 @@ void ultraSonicTest() {
 
 void fullTest() {
 
-  int servoVal = val * 4;
+  int servoVal = val * potValMapped;
 
   servo5.write(servoVal);
   servo6.write(servoVal);
@@ -73,7 +101,12 @@ void fullTestIf() {
     servo9.write(0);
 
   }
+}
 
+void potTest() {
 
+  potVal = analogRead(potPin);
+
+  potValMapped = map(potVal, 0, 1023, 1, 10);
 
 }
